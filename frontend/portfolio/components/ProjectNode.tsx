@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { Handle, Position } from 'reactflow';
 import { Project } from '@/data/projects';
 
@@ -26,15 +27,15 @@ const colorMap = {
 export default function ProjectNode({ data, selected }: ProjectNodeProps) {
   const { project, isActive, isNeighbor } = data;
   const borderClass = colorMap[project.color] || colorMap.cyan;
-  const stateClass = isActive
-    ? 'scale-105 opacity-100'
-    : isNeighbor
-      ? 'opacity-90'
-      : 'opacity-60';
+  const stateClass = isActive ? 'opacity-100' : isNeighbor ? 'opacity-90' : 'opacity-60';
 
   return (
-    <div
-      className={`flex flex-col items-center justify-center rounded-lg border-2 bg-dark-card backdrop-blur-sm cursor-pointer transition-all ${
+    <motion.div
+      initial={false}
+      animate={{ scale: isActive ? 1.05 : isNeighbor ? 0.99 : 0.94, y: isActive ? -2 : 0 }}
+      whileHover={{ scale: isActive ? 1.07 : 0.98, y: -3 }}
+      transition={{ type: 'spring', stiffness: 180, damping: 18, mass: 0.7 }}
+      className={`flex flex-col items-center justify-center rounded-lg border-2 bg-dark-card backdrop-blur-sm cursor-pointer transition-colors duration-300 ${
         borderClass
       } ${selected ? 'ring-2 ring-offset-2 ring-offset-dark-bg' : ''} ${stateClass}`}
     >
@@ -61,6 +62,6 @@ export default function ProjectNode({ data, selected }: ProjectNodeProps) {
       )}
 
       <Handle type="source" position={Position.Bottom} />
-    </div>
+    </motion.div>
   );
 }

@@ -18,7 +18,7 @@ export function Navigation() {
 
   return (
     <motion.nav
-      className="fixed bottom-4 right-4 z-50 flex flex-col items-center gap-2 rounded-2xl border border-dark-border bg-dark-card/90 p-2.5 backdrop-blur-xl shadow-xl"
+      className="fixed bottom-6 right-6 z-[70] flex flex-col items-center gap-2 rounded-2xl border border-cyan/15 bg-dark-card/95 p-2.5 shadow-[0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:bottom-8 md:right-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.5 }}
@@ -36,7 +36,7 @@ export function Navigation() {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             }}
-            className="relative flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:text-cyan transition group border border-transparent hover:border-cyan/40"
+            className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-transparent text-gray-400 transition group hover:border-cyan/40 hover:text-cyan"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -45,7 +45,7 @@ export function Navigation() {
             {/* Tooltip */}
             {hoveredIcon === item.id && (
               <motion.div
-                className="absolute right-14 top-1/2 -translate-y-1/2 bg-dark-border rounded px-3 py-1 text-xs text-cyan whitespace-nowrap pointer-events-none"
+                className="absolute right-14 top-1/2 -translate-y-1/2 whitespace-nowrap rounded border border-cyan/20 bg-dark-card/95 px-3 py-1 text-xs text-cyan pointer-events-none shadow-lg"
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -56,7 +56,7 @@ export function Navigation() {
             {/* Glow on hover */}
             {hoveredIcon === item.id && (
               <motion.div
-                className="absolute inset-0 bg-cyan rounded-lg opacity-10 blur-lg"
+                className="absolute inset-0 rounded-lg bg-cyan opacity-15 blur-xl"
                 layoutId="navGlow"
               />
             )}

@@ -27,7 +27,7 @@ const experiences = [
 export function ExperienceSection() {
   return (
     <section id="experience" className="relative z-10 py-24 px-6">
-      <div className="max-w-6xl mx-auto rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
+      <div className="registry-shell registry-shell--blue max-w-6xl mx-auto rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
         <motion.div
           className="px-6 md:px-8 py-8"
           initial={{ opacity: 0, y: 20 }}
@@ -38,24 +38,29 @@ export function ExperienceSection() {
             <div>
               <p className="font-mono text-xs text-cyan mb-3">NODE_HISTORY // EXPERIENCE_LOG</p>
               <h2 className="text-4xl md:text-5xl font-bold">Experience</h2>
+              <p className="mt-3 max-w-2xl text-gray-400">
+                Roles and programs that shaped how I think about reliability, communication, and product polish.
+              </p>
             </div>
-            <a
-              href="/resume.pdf"
-              className="inline-flex items-center gap-2 rounded-full border border-cyan/50 bg-dark-card/80 px-4 py-2 text-sm font-medium text-cyan hover:bg-cyan hover:text-dark-bg transition"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FileText size={16} />
-              View CV
-              <ExternalLink size={14} />
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/resume.pdf"
+                className="inline-flex items-center gap-2 rounded-full border border-cyan/40 bg-dark-card/80 px-4 py-2 text-sm font-medium text-cyan transition hover:bg-cyan hover:text-dark-bg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FileText size={16} />
+                View CV
+                <ExternalLink size={14} />
+              </a>
+            </div>
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">
             {experiences.map((item, index) => (
               <motion.div
                 key={item.company}
-                className="rounded-2xl border border-dark-border bg-dark-bg/50 backdrop-blur p-5 shadow-lg"
+                className="rounded-2xl border border-dark-border bg-dark-bg/50 p-5 shadow-lg transition hover:border-cyan/30 hover:bg-dark-bg/70"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

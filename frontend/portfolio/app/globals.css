@@ -32,8 +32,185 @@
   body {
     @apply bg-dark-bg text-gray-200 antialiased;
     background-color: var(--background);
+    background-image:
+      radial-gradient(circle at top, rgba(79, 255, 176, 0.14), transparent 28%),
+      radial-gradient(circle at 82% 18%, rgba(103, 232, 249, 0.12), transparent 18%),
+      radial-gradient(circle at 18% 82%, rgba(167, 139, 250, 0.1), transparent 20%),
+      radial-gradient(circle at 50% 45%, rgba(79, 255, 176, 0.06), transparent 34%),
+      linear-gradient(120deg, rgba(79, 255, 176, 0.03), transparent 28%, rgba(103, 232, 249, 0.04) 58%, transparent 78%, rgba(167, 139, 250, 0.03)),
+      linear-gradient(180deg, rgba(6, 8, 16, 0.9), rgba(6, 8, 16, 0.98));
     color: var(--foreground);
+    background-attachment: fixed;
   }
+}
+
+.registry-shell {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(18, 24, 31, 0.9), rgba(9, 12, 18, 0.95)),
+    linear-gradient(135deg, rgba(79, 255, 176, 0.08), transparent 42%);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.registry-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top left, rgba(79, 255, 176, 0.16), transparent 30%),
+    radial-gradient(circle at top right, rgba(103, 232, 249, 0.12), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 22%);
+  opacity: 1;
+}
+
+.registry-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 0 1px rgba(79, 255, 176, 0.12),
+    inset 0 -90px 120px rgba(0, 0, 0, 0.12);
+}
+
+.registry-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-section[data-active='true'] .registry-shell {
+  box-shadow:
+    0 28px 100px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(79, 255, 176, 0.22),
+    0 0 45px rgba(79, 255, 176, 0.12);
+}
+
+.portfolio-section[data-authenticated='true'] .registry-shell {
+  box-shadow:
+    0 30px 110px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(79, 255, 176, 0.36),
+    0 0 70px rgba(79, 255, 176, 0.2);
+}
+
+.portfolio-section[data-active='true'] .registry-shell::after {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 0 0 1px rgba(79, 255, 176, 0.24),
+    inset 0 0 42px rgba(79, 255, 176, 0.08);
+}
+
+.portfolio-section[data-authenticated='true'] .registry-shell::after {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(79, 255, 176, 0.38),
+    inset 0 0 70px rgba(79, 255, 176, 0.14);
+  animation: trust-pulse 1.8s ease-in-out 1;
+}
+
+.portfolio-section[data-authenticated='true'] .registry-shell::before {
+  animation: auth-sweep 1.8s ease-out 1;
+}
+
+.portfolio-section[data-active='true'] .hero-surface {
+  box-shadow:
+    inset 0 0 0 1px rgba(79, 255, 176, 0.18),
+    0 0 100px rgba(79, 255, 176, 0.08);
+}
+
+.portfolio-section[data-authenticated='true'] .hero-surface {
+  box-shadow:
+    inset 0 0 0 1px rgba(79, 255, 176, 0.24),
+    0 0 120px rgba(79, 255, 176, 0.12);
+}
+
+.portfolio-section[data-active='true'] .hero-surface::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(79, 255, 176, 0.08), transparent 52%);
+  opacity: 1;
+}
+
+.portfolio-section[data-authenticated='true'] .hero-surface::after {
+  background: radial-gradient(circle at center, rgba(79, 255, 176, 0.14), transparent 48%);
+}
+
+.portfolio-section[data-active='true'] {
+  scroll-margin-top: 96px;
+}
+
+@keyframes trust-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.18;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.36;
+  }
+}
+
+@keyframes auth-sweep {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.98);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.01);
+  }
+}
+
+.registry-shell--mint {
+  background:
+    linear-gradient(180deg, rgba(18, 24, 31, 0.93), rgba(9, 12, 18, 0.97)),
+    linear-gradient(135deg, rgba(79, 255, 176, 0.16), transparent 45%);
+}
+
+.registry-shell--mint::before {
+  background:
+    radial-gradient(circle at top left, rgba(79, 255, 176, 0.22), transparent 28%),
+    radial-gradient(circle at top right, rgba(103, 232, 249, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 22%);
+}
+
+.registry-shell--blue {
+  background:
+    linear-gradient(180deg, rgba(17, 23, 33, 0.93), rgba(8, 11, 17, 0.97)),
+    linear-gradient(135deg, rgba(103, 232, 249, 0.16), transparent 45%);
+}
+
+.registry-shell--blue::before {
+  background:
+    radial-gradient(circle at top left, rgba(103, 232, 249, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(79, 255, 176, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 22%);
+}
+
+.registry-shell--violet {
+  background:
+    linear-gradient(180deg, rgba(19, 18, 31, 0.93), rgba(8, 10, 18, 0.97)),
+    linear-gradient(135deg, rgba(167, 139, 250, 0.16), transparent 45%);
+}
+
+.registry-shell--violet::before {
+  background:
+    radial-gradient(circle at top left, rgba(167, 139, 250, 0.2), transparent 28%),
+    radial-gradient(circle at top right, rgba(79, 255, 176, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 22%);
 }
 
 /* Scrollbar styling */
@@ -69,7 +246,7 @@
 
 .react-flow__edge.edge-dash .react-flow__edge-path {
   stroke-dasharray: 6 6;
-  animation: edge-dash 6s linear infinite;
+  animation: edge-dash 9s linear infinite;
 }
 
 @keyframes orbit-rotate {

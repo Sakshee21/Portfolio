@@ -49,16 +49,20 @@ const stacks = [
 export function TechnologyRegistry() {
   return (
     <section id="stack" className="relative z-10 py-24 px-6">
-      <div className="max-w-6xl mx-auto rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
+      <div className="registry-shell registry-shell--violet max-w-6xl mx-auto rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
         <motion.div
           className="px-6 md:px-8 py-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs text-cyan mb-3">TECH_REGISTRY // HEALTH_MONITOR</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Technology Registry</h2>
-          <p className="text-gray-300 text-lg mb-10">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="font-mono text-xs text-cyan mb-3">TECH_REGISTRY // HEALTH_MONITOR</p>
+              <h2 className="text-4xl md:text-5xl font-bold">Technology Registry</h2>
+            </div>
+          </div>
+          <p className="text-gray-300 text-lg max-w-3xl mb-10">
             A live view of the tooling and systems I use most — modeled as health indicators instead of a static list.
           </p>
 
@@ -66,7 +70,7 @@ export function TechnologyRegistry() {
             {stacks.map((stack, index) => (
               <motion.div
                 key={stack.title}
-                className="border border-dark-border rounded-2xl p-6 bg-dark-bg/50 backdrop-blur"
+                className="group border border-dark-border rounded-2xl p-6 bg-dark-bg/68 backdrop-blur transition hover:border-cyan/40 hover:bg-dark-bg/86"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -77,7 +81,7 @@ export function TechnologyRegistry() {
                     <p className="text-xs text-gray-400 font-mono mb-1">SYSTEM_LAYER</p>
                     <h3 className="text-xl font-semibold text-white">{stack.title}</h3>
                   </div>
-                  <span className="text-xs font-mono px-3 py-1 border border-cyan text-cyan rounded">
+                  <span className="rounded-full border border-cyan/30 bg-cyan/5 px-3 py-1 text-xs font-mono text-cyan">
                     {stack.status}
                   </span>
                 </div>
@@ -89,9 +93,9 @@ export function TechnologyRegistry() {
                         <span>{item.name}</span>
                         <span className="text-cyan font-mono">{item.level}%</span>
                       </div>
-                      <div className="h-2 bg-dark-border rounded">
+                      <div className="h-2 rounded bg-dark-border/80">
                         <div
-                          className="h-2 rounded bg-gradient-to-r from-cyan to-blue-electric"
+                          className="h-2 rounded bg-gradient-to-r from-cyan to-blue-electric shadow-[0_0_18px_rgba(79,255,176,0.15)]"
                           style={{ width: `${item.level}%` }}
                         />
                       </div>

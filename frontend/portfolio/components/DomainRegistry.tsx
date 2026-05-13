@@ -51,15 +51,19 @@ const domains = [
 export function DomainRegistry() {
   return (
     <section id="domains" className="relative z-10 py-24 px-6">
-      <div className="max-w-6xl mx-auto rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
+      <div className="registry-shell registry-shell--blue max-w-6xl mx-auto rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
         <motion.div
           className="px-6 md:px-8 py-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs text-cyan mb-3">DOMAIN_REGISTRY // NETWORK_OVERVIEW</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Domain Registry</h2>
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="font-mono text-xs text-cyan mb-3">DOMAIN_REGISTRY // NETWORK_OVERVIEW</p>
+              <h2 className="text-4xl md:text-5xl font-bold">Domain Registry</h2>
+            </div>
+          </div>
           <p className="text-gray-300 text-lg mb-12">
             Core engineering domains represented as active nodes in the portfolio network.
           </p>
@@ -70,7 +74,7 @@ export function DomainRegistry() {
               return (
                 <motion.div
                   key={domain.title}
-                  className="border border-dark-border rounded-2xl p-6 bg-dark-bg/50 backdrop-blur-sm"
+                  className="border border-dark-border rounded-2xl p-6 bg-dark-bg/68 backdrop-blur-sm transition duration-300 hover:border-cyan/35 hover:bg-dark-bg/84"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

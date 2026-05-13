@@ -11,7 +11,7 @@ export function TopStatusBar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="mx-auto flex items-center justify-between gap-3 rounded-full border border-dark-border bg-dark-card/85 backdrop-blur-xl px-4 md:px-5 py-2 shadow-lg max-w-7xl">
+      <div className="registry-shell registry-shell--mint mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-full border border-dark-border bg-dark-card/90 px-4 py-2 shadow-lg backdrop-blur-xl md:px-5">
         <div className="flex items-center gap-3 min-w-0">
           <div className="flex items-center gap-2 min-w-0">
             <span className="h-2.5 w-2.5 rounded-full bg-cyan shadow-glow-cyan shrink-0" />

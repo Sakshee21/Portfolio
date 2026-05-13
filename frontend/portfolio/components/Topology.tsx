@@ -67,11 +67,11 @@ export function Topology() {
     animated: false,
     className: 'edge-dash',
     style: {
-      stroke: 'rgba(0, 212, 255, 0.18)',
+      stroke: 'rgba(79, 255, 176, 0.14)',
       strokeWidth: 1.5,
     },
     labelStyle: {
-      fill: 'rgba(0, 212, 255, 0.95)',
+      fill: 'rgba(79, 255, 176, 0.9)',
       fontSize: '12px',
       fontWeight: 600,
     },
@@ -137,17 +137,29 @@ export function Topology() {
   return (
     <section className="relative z-10 py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
+        <div className="registry-shell registry-shell--mint rounded-[2rem] border border-dark-border bg-dark-card/55 backdrop-blur-md shadow-2xl overflow-hidden">
           <div className="px-6 md:px-8 pt-6 pb-4 border-b border-dark-border/70 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="font-mono text-xs text-cyan mb-2">TOPOLOGY_REGISTRY // PROJECT_MAP</p>
-              <h2 className="text-4xl md:text-5xl font-bold">Project Topology</h2>
-              <p className="text-gray-400 mt-3 max-w-2xl">
-                Click any node to inspect the project, and hover connections to understand how the systems relate.
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="mb-2 font-mono text-xs text-cyan">TOPOLOGY_REGISTRY // PROJECT_MAP</p>
+              <h2 className="text-4xl font-bold md:text-5xl">Project Topology</h2>
+              <p className="mt-3 max-w-2xl text-gray-400">
+                Click a node to inspect a project, then trace the quiet relationship lines that connect the system.
               </p>
-            </div>
-            <div className="rounded-full border border-cyan/30 bg-dark-bg/70 px-4 py-2 text-xs font-mono text-cyan">
-              09 NODES • RELATIONSHIPS MAPPED
+            </motion.div>
+            <div className="flex flex-wrap items-center justify-end gap-3">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="rounded-full border border-cyan/20 bg-dark-bg/70 px-4 py-2 text-xs font-mono text-cyan/90"
+              >
+                <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-cyan shadow-[0_0_12px_rgba(79,255,176,0.5)]" />
+                09 NODES • RELATIONSHIPS MAPPED
+              </motion.div>
             </div>
           </div>
 
@@ -185,8 +197,9 @@ export function Topology() {
               return (
                 <motion.div
                   className="absolute top-8 right-8 bg-dark-card/90 border border-dark-border rounded-2xl p-6 max-w-sm shadow-lg backdrop-blur"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: 18, y: 8 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 160, damping: 20 }}
                 >
                   <p className="text-xs font-mono text-cyan mb-2">NODE_DETAIL</p>
                   <h3 className="text-lg font-bold text-white mb-2">{project.name}</h3>

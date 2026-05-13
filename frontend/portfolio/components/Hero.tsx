@@ -21,7 +21,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-dark-bg/70 text-gray-200 flex flex-col justify-center items-center relative overflow-hidden backdrop-blur-sm">
+    <div className="hero-surface relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-dark-bg/70 px-6 py-20 text-gray-200 backdrop-blur-sm md:py-28">
       <div className="absolute inset-0 opacity-45">
         <GossipCanvas />
       </div>
@@ -91,7 +91,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
-          className="text-center z-10 max-w-4xl mx-auto px-6 pt-36"
+          className="z-10 mx-auto max-w-5xl text-center"
         >
           {/* Main title */}
           <motion.div
@@ -99,7 +99,10 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            <h1 className="text-6xl md:text-7xl font-bold mb-2">
+            <div className="mb-5 inline-flex rounded-full border border-cyan/20 bg-dark-card/50 px-4 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-cyan/90">
+              open for work · hiring for distributed systems and backend roles
+            </div>
+            <h1 className="text-5xl font-bold leading-none tracking-tight sm:text-6xl md:text-7xl">
               <span className="bg-gradient-to-r from-cyan to-blue-electric bg-clip-text text-transparent">
                 Sakshee Ujjwal Kumat
               </span>
@@ -108,25 +111,22 @@ export function Hero() {
 
           {/* Subtitle section */}
           <motion.div
-            className="mt-6"
+            className="mx-auto mt-6 max-w-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <p className="text-xl md:text-2xl text-gray-300 mb-4">
+            <p className="text-lg text-gray-300 sm:text-xl md:text-2xl">
               Distributed Systems & Backend Engineering
             </p>
-            <p className="text-base text-gray-400 font-mono">
+            <p className="mt-3 font-mono text-sm text-gray-400 sm:text-base">
               Secure Platforms • Protocol Tooling • System Visibility
-            </p>
-            <p className="mt-3 text-sm text-gray-500">
-              Click nodes to inspect project relationships, then trace how systems connect across the portfolio.
             </p>
           </motion.div>
 
           {/* Skills badges */}
           <motion.div
-            className="flex flex-wrap gap-3 justify-center mt-8 mb-12"
+            className="mt-8 flex flex-wrap justify-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -135,7 +135,7 @@ export function Hero() {
               (skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 border border-dark-border rounded text-xs text-gray-300 hover:border-cyan transition"
+                  className="rounded-full border border-dark-border px-3 py-1 text-xs text-gray-300 transition hover:border-cyan/60 hover:text-cyan"
                 >
                   {skill}
                 </span>
@@ -145,7 +145,7 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center"
+            className="mt-12 flex flex-col flex-wrap justify-center gap-3 sm:flex-row"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -189,13 +189,6 @@ export function Hero() {
             </button>
           </motion.div>
 
-          {/* Bottom accent line */}
-          <motion.div
-            className="h-px bg-gradient-to-r from-transparent via-purple to-transparent mt-12"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          />
         </motion.div>
       )}
 
