@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# next.js / build output
+.next/
+out/
+build/
+dist/
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env files
+.env*
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+.vercel
+portfolio.zip
+
+AGENTS.md
+CLAUDE.md

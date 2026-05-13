@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-dark-bg: #060810;
+  --color-dark-card: #0f1419;
+  --color-dark-border: #1a2332;
+  --color-cyan: #4fffb0;
+  --color-cyan-dark: #2fdc8f;
+  --color-blue: #67e8f9;
+  --color-blue-electric: #67e8f9;
+  --color-purple: #a78bfa;
+  --shadow-glow-cyan: 0 0 20px rgba(79, 255, 176, 0.35);
+  --shadow-glow-blue: 0 0 20px rgba(103, 232, 249, 0.3);
+  --shadow-glow-purple: 0 0 20px rgba(167, 139, 250, 0.25);
+}
+
+@layer base {
+  :root {
+    --background: #060810;
+    --foreground: #e5e5e5;
+    --card-bg: #0f1419;
+    --border: #1a2332;
+    --cyan: #4fffb0;
+    --blue: #67e8f9;
+    --purple: #a78bfa;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-dark-bg text-gray-200 antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 255, 176, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 255, 176, 0.5);
+}
+
+/* Selection colors */
+::selection {
+  background-color: rgba(79, 255, 176, 0.2);
+  color: #4fffb0;
+}
+
+@keyframes edge-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.react-flow__edge.edge-dash .react-flow__edge-path {
+  stroke-dasharray: 6 6;
+  animation: edge-dash 6s linear infinite;
+}
+
+@keyframes orbit-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-ring {
+  position: absolute;
+  inset: 6px;
+  border-radius: 9999px;
+  border: 1px dashed rgba(79, 255, 176, 0.5);
+  animation: orbit-rotate 4s linear infinite;
+}
