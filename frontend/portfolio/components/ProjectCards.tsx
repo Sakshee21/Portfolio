@@ -67,7 +67,7 @@ export function ProjectCards() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group min-h-full bg-dark-card/58 p-6 transition duration-300 hover:bg-dark-card/66"
+                className="group min-h-full border border-dark-border/70 bg-dark-card/18 p-6 transition duration-300 hover:bg-dark-card/28 hover:border-cyan/25"
               >
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
@@ -115,7 +115,7 @@ export function ProjectCards() {
                 )}
 
                 {/* Links */}
-                <div className="flex gap-3 pt-4 border-t border-dark-border/70">
+                <div className="flex gap-3 pt-4 border-t border-dark-border/60">
                   <a
                     href={project.github}
                     target="_blank"

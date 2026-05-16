@@ -11,46 +11,52 @@ import { ContactSection } from '@/components/ContactSection';
 import { TechnologyRegistry } from '@/components/TechnologyRegistry';
 import { DomainRegistry } from '@/components/DomainRegistry';
 import { ExperienceSection } from '@/components/ExperienceSection';
+import { NodeSection } from '@/components/NodeSection';
+import { ScrollOrb } from '@/components/ScrollOrb';
+import { OrbProvider } from '@/context/OrbContext';
 
 export default function Home() {
   return (
-    <main className="bg-dark-bg text-gray-200 relative">
-      <TopStatusBar />
+    <OrbProvider>
+      <main className="bg-dark-bg text-gray-200 relative">
+        <TopStatusBar />
 
-      <InfrastructureTopologyBackground />
-      <section id="home" className="portfolio-section">
-        <Hero />
-      </section>
+        <InfrastructureTopologyBackground />
+        <section id="home" className="portfolio-section">
+          <Hero />
+        </section>
 
-      <section id="about" className="portfolio-section">
-        <AboutSection />
-      </section>
+        <NodeSection id="about">
+          <AboutSection />
+        </NodeSection>
 
-      <section id="experience" className="portfolio-section px-6">
-        <ExperienceSection />
-      </section>
+        <NodeSection id="experience" className="px-6">
+          <ExperienceSection />
+        </NodeSection>
 
-      <section id="domains" className="portfolio-section px-6">
-        <DomainRegistry />
-      </section>
+        <NodeSection id="domains" className="px-6">
+          <DomainRegistry />
+        </NodeSection>
 
-      <section id="topology" className="portfolio-section px-6">
-        <Topology />
-      </section>
+        <NodeSection id="topology" className="px-6">
+          <Topology />
+        </NodeSection>
 
-      <section id="projects" className="portfolio-section px-6">
-        <ProjectCards />
-      </section>
+        <NodeSection id="projects" className="px-6">
+          <ProjectCards />
+        </NodeSection>
 
-      <section id="stack" className="portfolio-section px-6">
-        <TechnologyRegistry />
-      </section>
+        <NodeSection id="stack" className="px-6">
+          <TechnologyRegistry />
+        </NodeSection>
 
-      <section id="contact" className="portfolio-section px-6">
-        <ContactSection />
-      </section>
+        <NodeSection id="contact" className="px-6">
+          <ContactSection />
+        </NodeSection>
 
-      <Navigation />
-    </main>
+        <ScrollOrb />
+        <Navigation />
+      </main>
+    </OrbProvider>
   );
 }
