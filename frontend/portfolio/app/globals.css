@@ -543,3 +543,31 @@
 .node-status__dot--online {
   background: #4fffb0;
 }
+
+@keyframes replica-drift {
+  0% {
+    transform: translate(calc(var(--drift-x, -4px) + 2px), var(--drift-y, 0px)) scale(var(--drift-scale, 1));
+  }
+  50% {
+    transform: translate(calc(var(--drift-x, -4px) - 2px), var(--drift-y, 0px)) scale(var(--drift-scale, 1));
+  }
+  100% {
+    transform: translate(calc(var(--drift-x, -4px) + 2px), var(--drift-y, 0px)) scale(var(--drift-scale, 1));
+  }
+}
+
+.replica-drifting {
+  animation: replica-drift var(--drift-duration, 3.5s) ease-in-out infinite;
+}
+
+.replica-badge {
+  position: absolute;
+  top: -8px;
+  right: 0;
+  font-family: var(--font-geist-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: rgba(79, 255, 176, 0.6);
+  opacity: 0;
+  pointer-events: none;
+}
