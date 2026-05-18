@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sakshee Patel | Distributed Systems Control Plane",
+  title: "Sakshee Kumat | Distributed Systems Control Plane",
   description:
     "Secure distributed systems portfolio featuring topology maps, observability-inspired UI, and infrastructure projects.",
 };

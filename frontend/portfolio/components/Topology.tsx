@@ -158,7 +158,7 @@ export function Topology() {
                 className="rounded-full border border-cyan/20 bg-dark-bg/70 px-4 py-2 text-xs font-mono text-cyan/90"
               >
                 <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-cyan shadow-[0_0_12px_rgba(79,255,176,0.5)]" />
-                09 NODES • RELATIONSHIPS MAPPED
+                06 NODES • RELATIONSHIPS MAPPED
               </motion.div>
             </div>
           </div>

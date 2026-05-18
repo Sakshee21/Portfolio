@@ -24,7 +24,7 @@ export function TopStatusBar() {
         <div className="hidden sm:flex items-center gap-5 text-[11px] md:text-xs font-mono text-gray-300">
           <span className="flex items-center gap-2">
             <Cpu size={13} className="text-cyan" />
-            NODES: <span className="text-cyan">09 ACTIVE</span>
+            NODES: <span className="text-cyan">06 ACTIVE</span>
           </span>
           <span className="flex items-center gap-2">
             <Activity size={13} className="text-blue" />

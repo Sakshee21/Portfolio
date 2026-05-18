@@ -5,45 +5,56 @@ import { Shield, Server, Network, Radar, KeyRound, Database } from 'lucide-react
 
 const domains = [
   {
-    title: 'Distributed Systems',
-    tag: 'ANTI_ENTROPY',
-    description: 'Consensus, gossip propagation, and fault-tolerant coordination patterns.',
-    chips: ['Cyclon', 'Raft', 'Vector Clocks', 'CRDTs'],
-    icon: Network,
-  },
-  {
-    title: 'Backend Engineering',
-    tag: 'SERVICE_MESH',
-    description: 'High-throughput APIs, orchestration flows, and data reliability under load.',
-    chips: ['Go', 'Rust', 'gRPC', 'Kafka'],
+    name: 'Languages',
+    sublabel: 'CORE_STACK',
+    status: 'ACTIVE',
+    description: 'Across systems programming, backend services, and full-stack development.',
+    tags: ['C', 'Python', 'Java', 'TypeScript', 'JavaScript', 'Dart', 'SQL'],
     icon: Server,
   },
   {
-    title: 'Security & Identity',
-    tag: 'ZERO_TRUST',
-    description: 'Passwordless auth, policy enforcement, and secure session orchestration.',
-    chips: ['WebAuthn', 'mTLS', 'OAuth2', 'DID'],
+    name: 'Distributed Systems',
+    sublabel: 'ANTI_ENTROPY',
+    status: 'ACTIVE',
+    description:
+      'Implemented Cyclon gossip from scratch in C — peer sampling, epidemic dissemination, convergence analysis across 128-node simulations.',
+    tags: ['Gossip Protocols', 'P2P Networking', 'UDP Sockets', 'Epidemic Broadcast', 'Peer Sampling', 'Cyclon'],
+    icon: Network,
+  },
+  {
+    name: 'Security & Cryptography',
+    sublabel: 'ZERO_TRUST',
+    status: 'HARDENED',
+    description:
+      'Device-bound RSA key generation, PBKDF2 key derivation, behavioral risk scoring, and SHA-256 tamper-evident audit chains.',
+    tags: ['WebCrypto API', 'RSA-2048', 'AES-256-GCM', 'PBKDF2', 'Zero-Trust', 'FIDO2', 'JWT'],
     icon: Shield,
   },
   {
-    title: 'Observability',
-    tag: 'TRACE_STREAM',
-    description: 'Metrics, tracing, and system diagnostics for live infrastructure clarity.',
-    chips: ['Tracing', 'Metrics', 'Alerts', 'Dashboards'],
-    icon: Radar,
-  },
-  {
-    title: 'Data Systems',
-    tag: 'RELIABILITY',
-    description: 'Resilient storage, caching, and consistent data pipelines.',
-    chips: ['PostgreSQL', 'Redis', 'Event Logs', 'Indexing'],
+    name: 'Blockchain',
+    sublabel: 'ON_CHAIN',
+    status: 'ACTIVE',
+    description:
+      'Four production smart contracts for SafeHavenWS — RBAC, SOS case creation, case registry, and volunteer coordination on EVM.',
+    tags: ['Solidity', 'Hardhat', 'Web3.js', 'Smart Contracts', 'EVM', 'Firebase'],
     icon: Database,
   },
   {
-    title: 'Trust Protocols',
-    tag: 'HANDSHAKE',
-    description: 'Secure flows for node identity, verification, and safe exchange.',
-    chips: ['FIDO2', 'Passkeys', 'PKCE', 'JWT'],
+    name: 'ML & Observability',
+    sublabel: 'ML_PIPELINE',
+    status: 'ACTIVE',
+    description:
+      'Explainable IDS trained on 2.83M records with temporal concept drift monitoring. Medical triage chatbot via few-shot prompting on Granite-13B.',
+    tags: ['XGBoost', 'SHAP / XAI', 'Concept Drift', 'scikit-learn', 'Few-Shot Prompting', 'IBM Watsonx'],
+    icon: Radar,
+  },
+  {
+    name: 'Full-Stack & DevOps',
+    sublabel: 'FULL_STACK',
+    status: 'STABLE',
+    description:
+      'End-to-end web applications with role-based access control, analytics pipelines, and automated CI/CD deployment.',
+    tags: ['React', 'FastAPI', 'Node.js', 'REST APIs', 'GitHub Actions', 'SQLite', 'JWT Auth'],
     icon: KeyRound,
   },
 ];
@@ -73,7 +84,7 @@ export function DomainRegistry() {
               const Icon = domain.icon;
               return (
                 <motion.div
-                  key={domain.title}
+                  key={domain.name}
                   className="border border-dark-border rounded-2xl p-6 bg-dark-bg/68 backdrop-blur-sm transition duration-300 hover:border-cyan/35 hover:bg-dark-bg/84"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -86,21 +97,21 @@ export function DomainRegistry() {
                         <Icon size={18} />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-white">{domain.title}</h3>
-                        <p className="text-xs font-mono text-cyan">{domain.tag}</p>
+                        <h3 className="text-lg font-semibold text-white">{domain.name}</h3>
+                        <p className="text-xs font-mono text-cyan">{domain.sublabel}</p>
                       </div>
                     </div>
                     <span className="text-xs font-mono px-3 py-1 border border-cyan/40 text-cyan rounded">
-                      ACTIVE
+                      {domain.status}
                     </span>
                   </div>
 
                   <p className="text-sm text-gray-400 mb-5">{domain.description}</p>
 
                   <div className="flex flex-wrap gap-2">
-                    {domain.chips.map((chip) => (
-                      <span key={chip} className="px-2 py-1 rounded text-xs bg-dark-border text-gray-300">
-                        {chip}
+                    {domain.tags.map((tag) => (
+                      <span key={tag} className="px-2 py-1 rounded text-xs bg-dark-border text-gray-300">
+                        {tag}
                       </span>
                     ))}
                   </div>

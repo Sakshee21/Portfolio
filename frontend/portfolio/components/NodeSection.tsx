@@ -30,6 +30,7 @@ export function NodeSection({ id, className, children }: NodeSectionProps) {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
   const { itemsRef, ready } = useNodeChildren(contentRef, { enabled });
+  const triggerRafRef = useRef<number | null>(null);
 
   const setRefs = useCallback(
     (node: HTMLElement | null) => {
@@ -53,6 +54,10 @@ export function NodeSection({ id, className, children }: NodeSectionProps) {
       if (scanRafRef.current) {
         window.cancelAnimationFrame(scanRafRef.current);
         scanRafRef.current = null;
+      }
+      if (triggerRafRef.current) {
+        window.cancelAnimationFrame(triggerRafRef.current);
+        triggerRafRef.current = null;
       }
     };
   }, []);
@@ -175,7 +180,7 @@ export function NodeSection({ id, className, children }: NodeSectionProps) {
         return;
       }
 
-      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const initialRect = sectionRef.current.getBoundingClientRect();
       const startDelay = 200;
       const duration = 600;
       const startTime = performance.now() + startDelay;
@@ -192,9 +197,11 @@ export function NodeSection({ id, className, children }: NodeSectionProps) {
 
         const progress = Math.min(1, (now - startTime) / duration);
         const scanY = progress * sectionHeight;
+        const sectionRect = sectionRef.current.getBoundingClientRect();
+        const rectTop = Number.isFinite(sectionRect.top) ? sectionRect.top : initialRect.top;
 
         itemsRef.current.forEach((item) => {
-          const elementTop = item.element.getBoundingClientRect().top - sectionRect.top;
+          const elementTop = item.element.getBoundingClientRect().top - rectTop;
           if (scanY >= elementTop) {
             triggerArrival(item);
           }
@@ -269,19 +276,51 @@ export function NodeSection({ id, className, children }: NodeSectionProps) {
     }
   }, [applyOfflineState, enabled, ready, status]);
 
-  useEffect(() => {
+  const checkTrigger = useCallback(() => {
     if (!enabled || triggeredRef.current || !sectionRef.current) {
       return;
     }
 
-    const sectionTop = sectionRef.current.getBoundingClientRect().top + window.scrollY;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
     const orbDocY = orbY + window.scrollY;
+    const sectionTop = rect.top + window.scrollY;
+    const threshold = 8;
 
-    if (orbDocY >= sectionTop) {
+    if (isVisible && orbDocY >= sectionTop - threshold) {
       triggeredRef.current = true;
       runSequence();
     }
   }, [enabled, orbY, runSequence]);
+
+  useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
+    const scheduleCheck = () => {
+      if (triggerRafRef.current) {
+        window.cancelAnimationFrame(triggerRafRef.current);
+      }
+      triggerRafRef.current = window.requestAnimationFrame(() => {
+        triggerRafRef.current = null;
+        checkTrigger();
+      });
+    };
+
+    scheduleCheck();
+    window.addEventListener('scroll', scheduleCheck, { passive: true });
+    window.addEventListener('resize', scheduleCheck);
+
+    return () => {
+      window.removeEventListener('scroll', scheduleCheck);
+      window.removeEventListener('resize', scheduleCheck);
+      if (triggerRafRef.current) {
+        window.cancelAnimationFrame(triggerRafRef.current);
+        triggerRafRef.current = null;
+      }
+    };
+  }, [checkTrigger, enabled]);
 
   const baseClassName = ['portfolio-section', className].filter(Boolean).join(' ');
   const mergedClassName = enabled ? `${baseClassName} node-section` : baseClassName;

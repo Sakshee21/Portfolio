@@ -25,12 +25,12 @@ export function ContactSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <a
-              href="mailto:sakshee.ujjwal.kumat@gmail.com"
+              href="mailto:sakshee.kumat@gmail.com"
               className="group border border-dark-border rounded-2xl p-6 bg-dark-bg/50 transition hover:border-cyan/60 hover:bg-dark-bg/70"
             >
               <div className="flex items-center gap-3">
                 <Mail className="text-cyan" size={20} />
-                <span className="text-gray-200 group-hover:text-cyan transition">sakshee.ujjwal.kumat@gmail.com</span>
+                <span className="text-gray-200 group-hover:text-cyan transition">sakshee.kumat@gmail.com</span>
               </div>
               <p className="text-xs text-gray-400 mt-3 font-mono">ENCRYPTED_EMAIL_LINK</p>
             </a>

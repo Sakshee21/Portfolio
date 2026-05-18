@@ -25,7 +25,7 @@ export function ScrollOrb() {
 
   return (
     <div
-      className={`scroll-orb fixed right-7 top-0 z-[60] hidden lg:block ${
+      className={`scroll-orb fixed left-7 top-0 z-[60] hidden lg:block ${
         flareActive ? 'scroll-orb--flare' : ''
       }`}
       style={{ transform: `translateY(${orbY}px)` }}
