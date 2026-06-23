@@ -23,8 +23,8 @@ export function Topology() {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   const nodeSizes: Record<string, number> = {
-    'cyclon-gossip': 210,
-    'safe-haven': 200,
+    'cyclon-gossip': 220,
+    'safe-haven': 210,
   };
 
   const adjacency = useMemo(() => {
@@ -41,10 +41,10 @@ export function Topology() {
   // Create nodes from project data
   const initialNodes: Node[] = projects.map((project, idx) => {
     const angle = (idx / projects.length) * Math.PI * 2;
-    const radius = 250;
+    const radius = 370;
     const x = Math.cos(angle) * radius;
     const y = Math.sin(angle) * radius;
-    const size = nodeSizes[project.id] || 170;
+    const size = nodeSizes[project.id] || 185;
 
     return {
       id: project.id,
@@ -71,12 +71,12 @@ export function Topology() {
       strokeWidth: 1.5,
     },
     labelStyle: {
-      fill: 'rgba(79, 255, 176, 0.9)',
-      fontSize: '12px',
+      fill: 'rgba(79, 255, 176, 1)',
+      fontSize: '11px',
       fontWeight: 600,
     },
-    labelBgStyle: { fill: 'rgba(8, 12, 18, 0.85)' },
-    labelBgPadding: [6, 4],
+    labelBgStyle: { fill: 'rgba(6, 8, 16, 0.95)' },
+    labelBgPadding: [8, 5],
     labelBgBorderRadius: 6,
   }));
 
@@ -163,7 +163,7 @@ export function Topology() {
             </div>
           </div>
 
-          <div className="relative h-[760px]" onWheelCapture={(event) => event.stopPropagation()}>
+          <div className="relative h-[950px]" onWheelCapture={(event) => event.stopPropagation()}>
             <ReactFlow
               nodes={nodes}
               edges={edges}
@@ -178,7 +178,7 @@ export function Topology() {
               zoomOnDoubleClick={false}
               preventScrolling={false}
               fitView
-              fitViewOptions={{ padding: 0.2 }}
+              fitViewOptions={{ padding: 0.38 }}
             >
               <Background color="rgba(79, 255, 176, 0.05)" gap={24} />
               <Controls

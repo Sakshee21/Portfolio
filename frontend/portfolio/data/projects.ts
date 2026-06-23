@@ -78,6 +78,7 @@ export const projects: Project[] = [
     status: 'ACTIVE',
     technologies: ['RSA-2048', 'AES-256-GCM', 'PBKDF2', 'WebCrypto API', 'HMAC-SHA256', 'Node.js', 'Risk Scoring', 'Zero-Trust', 'Challenge-Response'],
     github: 'https://github.com/Sakshee21/SecureBank',
+    demo: 'https://contextdriftlock.onrender.com',
     image: '/projects/securebank.png',
     imageHint:
       'auth flow diagram: browser RSA keygen → device fingerprint → PBKDF2 → AES encrypt → challenge → RSA-PSS sign → 6D risk score → ALLOW/STEP_UP/DENY decision',
@@ -119,6 +120,7 @@ export const projects: Project[] = [
     status: 'ACTIVE',
     technologies: ['IBM Watsonx', 'Granite-13B', 'Watsonx Assistant', 'Few-Shot Prompting', 'Python', 'REST API'],
     github: 'https://github.com/Sakshee21/Medical-Chatbot-for-Symptom-Analysis-using-watsonx-assistant-and-watsonx.ai',
+    demo: 'https://sakshee21.github.io/Medical-Chatbot-for-Symptom-Analysis-using-watsonx-assistant-and-watsonx.ai/',
     image: '/projects/medicure.png',
     imageHint:
       'chatbot conversation UI screenshot showing symptom input and department recommendation response, or flow: user input → Watsonx Assistant → Granite-13B → diagnosis → department',
@@ -139,6 +141,7 @@ export const projects: Project[] = [
     status: 'ACTIVE',
     technologies: ['React', 'Vite', 'FastAPI', 'Python', 'SQLite', 'GitHub Actions', 'JWT Auth', 'Render'],
     github: 'https://github.com/Sakshee21/URL-Shortener-System',
+    demo: 'https://linksprint-landing.onrender.com',
     image: '/projects/linksprint.png',
     imageHint:
       'analytics dashboard screenshot showing link stats and click graphs, or system architecture diagram of the layered client-server design',

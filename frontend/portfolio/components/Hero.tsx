@@ -165,7 +165,7 @@ export function Hero() {
 
             {/* Typewriter role tagline */}
             <div className="mt-5 h-10 flex items-center justify-center">
-              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-purple drop-shadow-[0_0_14px_rgba(167,139,250,0.5)]">
+              <p className="font-orbitron text-xl sm:text-2xl md:text-3xl font-bold text-purple drop-shadow-[0_0_14px_rgba(167,139,250,0.5)]">
                 {displayText}
                 <span
                   className="ml-0.5 font-light"

@@ -8,7 +8,7 @@ type FormState = { name: string; email: string; message: string };
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
 // Sign up at formspree.io → create a form → paste your form ID below
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mlgydopb';
 
 export function ContactSection() {
   const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });

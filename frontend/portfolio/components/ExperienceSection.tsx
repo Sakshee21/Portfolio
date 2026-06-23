@@ -5,22 +5,16 @@ import { Briefcase, ExternalLink, FileText } from 'lucide-react';
 
 const experiences = [
   {
-    company: 'ColorTokens / PureID',
-    role: 'Internship',
+    company: 'PureID',
+    role: 'Intern',
     period: 'Internship',
-    summary: 'Worked on identity and secure access flows across ColorTokens and its PureID platform, with a focus on product reliability and implementation detail.',
+    summary: 'Worked on identity and secure access flows at PureID, with a focus on product reliability, authentication pipelines, and implementation detail.',
   },
   {
     company: 'Club VITeach',
     role: 'Outreach Lead',
     period: 'Leadership',
-    summary: 'Led outreach efforts, coordinated participation, and helped communicate the club’s initiatives across campus.',
-  },
-  {
-    company: "GirlScript Summer of Code'26",
-    role: 'User Experience Contributor',
-    period: 'Program',
-    summary: 'Contributing to open-source product polish and user experience improvements through the GSSoC’26 program.',
+    summary: "Led outreach efforts, coordinated participation, and helped communicate the club's initiatives across campus.",
   },
 ];
 
@@ -56,7 +50,7 @@ export function ExperienceSection() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             {experiences.map((item, index) => (
               <motion.div
                 key={item.company}

@@ -49,9 +49,9 @@ export default function ProjectNode({ data, selected }: ProjectNodeProps) {
       }`} />
 
       {/* Node label */}
-      <div className="text-center px-2">
+      <div className="text-center px-3 w-full">
         <p className="text-sm font-bold text-white truncate">{project.name}</p>
-        <p className="text-xs text-gray-400 mt-1">{project.category}</p>
+        <p className="text-xs text-gray-400 mt-1 truncate">{project.category}</p>
       </div>
 
       {/* Latency badge on hover */}
