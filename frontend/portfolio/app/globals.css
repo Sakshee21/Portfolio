@@ -213,6 +213,10 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 22%);
 }
 
+.font-orbitron {
+  font-family: var(--font-orbitron), 'Orbitron', sans-serif;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;

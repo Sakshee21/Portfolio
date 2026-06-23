@@ -13,6 +13,7 @@ import { DomainRegistry } from '@/components/DomainRegistry';
 import { ExperienceSection } from '@/components/ExperienceSection';
 import { NodeSection } from '@/components/NodeSection';
 import { ScrollOrb } from '@/components/ScrollOrb';
+import { CommandPalette } from '@/components/CommandPalette';
 import { OrbProvider } from '@/context/OrbContext';
 
 export default function Home() {
@@ -56,6 +57,7 @@ export default function Home() {
 
         <ScrollOrb />
         <Navigation />
+        <CommandPalette />
       </main>
     </OrbProvider>
   );
