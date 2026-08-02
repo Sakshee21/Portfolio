@@ -73,12 +73,12 @@ export function ExperienceSection() {
 
                 <div className="flex-1 pb-8 last:pb-0">
                   <div className="rounded-2xl border border-dark-border bg-dark-bg/50 p-5 shadow-lg transition hover:border-cyan/30 hover:bg-dark-bg/70">
-                    <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2 mb-4">
                       <div>
                         <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                         <p className="text-sm text-gray-400">{item.subtitle}</p>
                       </div>
-                      <span className="rounded-full border border-dark-border px-2.5 py-1 text-[11px] font-mono text-gray-300">
+                      <span className="shrink-0 rounded-full border border-dark-border px-2.5 py-1 text-[11px] font-mono text-gray-300">
                         {item.tag}
                       </span>
                     </div>

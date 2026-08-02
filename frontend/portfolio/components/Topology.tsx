@@ -163,7 +163,7 @@ export function Topology() {
             </div>
           </div>
 
-          <div className="relative h-[950px]" onWheelCapture={(event) => event.stopPropagation()}>
+          <div className="relative h-[520px] sm:h-[700px] lg:h-[950px]" onWheelCapture={(event) => event.stopPropagation()}>
             <ReactFlow
               nodes={nodes}
               edges={edges}
@@ -196,7 +196,7 @@ export function Topology() {
               if (!project) return null;
               return (
                 <motion.div
-                  className="absolute top-8 right-8 bg-dark-card/90 border border-dark-border rounded-2xl p-6 max-w-sm shadow-lg backdrop-blur"
+                  className="absolute top-4 left-4 right-4 bg-dark-card/90 border border-dark-border rounded-2xl p-6 shadow-lg backdrop-blur sm:top-8 sm:left-auto sm:right-8 sm:max-w-sm"
                   initial={{ opacity: 0, x: 18, y: 8 }}
                   animate={{ opacity: 1, x: 0, y: 0 }}
                   transition={{ type: 'spring', stiffness: 160, damping: 20 }}
