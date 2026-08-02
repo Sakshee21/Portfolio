@@ -35,7 +35,7 @@ export function NodeSection({ id, className, children }: NodeSectionProps) {
   const setRefs = useCallback(
     (node: HTMLElement | null) => {
       sectionRef.current = node;
-      scope.current = node;
+      Object.assign(scope, { current: node });
       if (enabled) {
         registerSection(id, node);
       }
@@ -142,8 +142,8 @@ export function NodeSection({ id, className, children }: NodeSectionProps) {
       element.style.filter = `blur(${item.blur}px)`;
 
       const spring = item.isCard
-        ? { type: 'spring', stiffness: 220, damping: 14, mass: 0.8, delay: delaySeconds }
-        : { type: 'spring', stiffness: 180, damping: 18, mass: 0.8, delay: delaySeconds };
+        ? { type: 'spring' as const, stiffness: 220, damping: 14, mass: 0.8, delay: delaySeconds }
+        : { type: 'spring' as const, stiffness: 180, damping: 18, mass: 0.8, delay: delaySeconds };
 
       animate(
         element,

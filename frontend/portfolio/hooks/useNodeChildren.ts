@@ -70,7 +70,7 @@ const uniqueElements = (elements: HTMLElement[]) => {
 };
 
 export function useNodeChildren(
-  contentRef: RefObject<HTMLElement>,
+  contentRef: RefObject<HTMLElement | null>,
   options: UseNodeChildrenOptions
 ): UseNodeChildrenResult {
   const { enabled } = options;
