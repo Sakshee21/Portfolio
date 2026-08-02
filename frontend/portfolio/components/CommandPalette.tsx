@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ArrowRight, ExternalLink, Mail, FileText, Layers, User, Home, Cpu, BarChart3 } from 'lucide-react';
+import { Search, ArrowRight, ExternalLink, Mail, FileText, Layers, User, Home, Cpu, BarChart3, Users } from 'lucide-react';
 
 type CmdType = 'section' | 'link';
 type Command = {
@@ -18,6 +18,7 @@ const COMMANDS: Command[] = [
   { type: 'section', label: 'Home',       desc: 'Back to top',        id: 'home',       icon: Home },
   { type: 'section', label: 'About',      desc: 'Who I am',           id: 'about',      icon: User },
   { type: 'section', label: 'Experience', desc: 'Work history',       id: 'experience', icon: Cpu },
+  { type: 'section', label: 'Leadership', desc: 'Community & outreach', id: 'leadership', icon: Users },
   { type: 'section', label: 'Projects',   desc: "What I've built",    id: 'projects',   icon: Layers },
   { type: 'section', label: 'Stack',      desc: 'Technologies',       id: 'stack',      icon: BarChart3 },
   { type: 'section', label: 'Contact',    desc: 'Get in touch',       id: 'contact',    icon: Mail },

@@ -9,8 +9,9 @@ import { AboutSection } from '@/components/AboutSection';
 import { InfrastructureTopologyBackground } from '@/components/InfrastructureTopologyBackground';
 import { ContactSection } from '@/components/ContactSection';
 import { TechnologyRegistry } from '@/components/TechnologyRegistry';
-import { DomainRegistry } from '@/components/DomainRegistry';
+// import { DomainRegistry } from '@/components/DomainRegistry';
 import { ExperienceSection } from '@/components/ExperienceSection';
+import { LeadershipSection } from '@/components/LeadershipSection';
 import { NodeSection } from '@/components/NodeSection';
 import { ScrollOrb } from '@/components/ScrollOrb';
 import { CommandPalette } from '@/components/CommandPalette';
@@ -35,9 +36,13 @@ export default function Home() {
           <ExperienceSection />
         </NodeSection>
 
-        <NodeSection id="domains" className="px-6">
-          <DomainRegistry />
+        <NodeSection id="leadership" className="px-6">
+          <LeadershipSection />
         </NodeSection>
+
+        {/* <NodeSection id="domains" className="px-6">
+          <DomainRegistry />
+        </NodeSection> */}
 
         <NodeSection id="topology" className="px-6">
           <Topology />

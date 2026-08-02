@@ -1,6 +1,6 @@
 'use client';
 
-import { Home, Layers, BarChart3, User, Mail, Cpu } from 'lucide-react';
+import { Home, Layers, BarChart3, User, Mail, Cpu, Users, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -10,6 +10,8 @@ export function Navigation() {
   const navItems = [
     { icon: Home, label: 'Home', id: 'home' },
     { icon: User, label: 'About', id: 'about' },
+    { icon: Briefcase, label: 'Experience', id: 'experience' },
+    { icon: Users, label: 'Leadership', id: 'leadership' },
     { icon: Layers, label: 'Topology', id: 'topology' },
     { icon: BarChart3, label: 'Projects', id: 'projects' },
     { icon: Cpu, label: 'Stack', id: 'stack' },

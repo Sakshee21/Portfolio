@@ -1,12 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { projects, categories } from '@/data/projects';
-import { ExternalLink, GitBranch } from 'lucide-react';
+import { ExternalLink, GitBranch, ImageOff } from 'lucide-react';
 
 export function ProjectCards() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const filtered = selectedCategory
     ? projects.filter((p) => p.category === selectedCategory)
@@ -69,6 +71,25 @@ export function ProjectCards() {
                 transition={{ delay: idx * 0.1 }}
                 className="group min-h-full border border-dark-border/70 bg-dark-card/18 p-6 transition duration-300 hover:bg-dark-card/28 hover:border-cyan/25"
               >
+                {/* Preview image */}
+                <div className="relative mb-4 aspect-video overflow-hidden rounded-xl border border-dark-border bg-dark-bg/60">
+                  {failedImages[project.id] ? (
+                    <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-gray-600">
+                      <ImageOff size={20} />
+                      <span className="font-mono text-[10px]">NO_PREVIEW</span>
+                    </div>
+                  ) : (
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} preview`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                      onError={() => setFailedImages((prev) => ({ ...prev, [project.id]: true }))}
+                    />
+                  )}
+                </div>
+
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div>

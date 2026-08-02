@@ -5,16 +5,18 @@ import { Briefcase, ExternalLink, FileText } from 'lucide-react';
 
 const experiences = [
   {
-    company: 'PureID',
-    role: 'Intern',
-    period: 'Internship',
-    summary: 'Worked on identity and secure access flows at PureID, with a focus on product reliability, authentication pipelines, and implementation detail.',
+    title: 'PureID',
+    subtitle: 'R&D Intern',
+    tag: 'Internship',
+    description:
+      'Working on passwordless authentication and identity systems at PureID — WebAuthn/FIDO2 protocols, IAM, and real-world protocol security, from network traffic analysis to vulnerability reconnaissance.',
   },
   {
-    company: 'Club VITeach',
-    role: 'Outreach Lead',
-    period: 'Leadership',
-    summary: "Led outreach efforts, coordinated participation, and helped communicate the club's initiatives across campus.",
+    title: 'Cyber Defenders Program',
+    subtitle: 'Research Intern',
+    tag: 'Internship',
+    description:
+      'Designing and deploying multi-region LLM-powered SSH honeypots on AWS, comparing static vs. AI-assisted deception across live environments and analyzing real attacker telemetry.',
   },
 ];
 
@@ -50,31 +52,39 @@ export function ExperienceSection() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="mt-2">
             {experiences.map((item, index) => (
               <motion.div
-                key={item.company}
-                className="rounded-2xl border border-dark-border bg-dark-bg/50 p-5 shadow-lg transition hover:border-cyan/30 hover:bg-dark-bg/70"
+                key={item.title}
+                className="relative flex gap-5"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
               >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan/10 text-cyan border border-cyan/20">
-                      <Briefcase size={18} />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">{item.company}</h3>
-                      <p className="text-sm text-gray-400">{item.role}</p>
-                    </div>
+                <div className="flex flex-col items-center">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan/10 text-cyan border border-cyan/20 z-10">
+                    <Briefcase size={18} />
                   </div>
-                  <span className="rounded-full border border-dark-border px-2.5 py-1 text-[11px] font-mono text-gray-300">
-                    {item.period}
-                  </span>
+                  {index < experiences.length - 1 && (
+                    <div className="mt-2 w-px flex-1 bg-gradient-to-b from-cyan/30 to-dark-border" />
+                  )}
                 </div>
-                <p className="text-sm leading-6 text-gray-400">{item.summary}</p>
+
+                <div className="flex-1 pb-8 last:pb-0">
+                  <div className="rounded-2xl border border-dark-border bg-dark-bg/50 p-5 shadow-lg transition hover:border-cyan/30 hover:bg-dark-bg/70">
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                        <p className="text-sm text-gray-400">{item.subtitle}</p>
+                      </div>
+                      <span className="rounded-full border border-dark-border px-2.5 py-1 text-[11px] font-mono text-gray-300">
+                        {item.tag}
+                      </span>
+                    </div>
+                    <p className="text-sm leading-6 text-gray-400">{item.description}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

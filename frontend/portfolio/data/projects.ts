@@ -57,7 +57,7 @@ export const projects: Project[] = [
     status: 'ACTIVE',
     technologies: ['Solidity', 'Hardhat', 'Flutter', 'Node.js', 'Web3.js', 'Firebase Auth', 'Smart Contracts'],
     github: 'https://github.com/Sakshee21/SafeHavenWS',
-    image: '/projects/safehavenws.png',
+    image: '/projects/safehaven.jpeg',
     imageHint:
       'Flutter mobile SOS screen, or data flow diagram: app → Node.js backend → createCase() smart contract → immutable blockchain ledger',
     metrics: {
