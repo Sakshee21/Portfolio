@@ -22,6 +22,9 @@ type OrbContextValue = {
 const OrbContext = createContext<OrbContextValue | null>(null);
 
 export function OrbProvider({ children }: { children: ReactNode }) {
+  // Runs on every viewport size, including mobile — the underlying scroll
+  // math and per-section reveal are cheap (one rAF loop + CSS transforms),
+  // so there's no real perf reason to gate this to desktop widths.
   const [enabled, setEnabled] = useState(false);
   const { orbY } = useScrollOrb({ enabled });
   const sectionsRef = useRef(new Map<string, HTMLElement>());
@@ -30,11 +33,7 @@ export function OrbProvider({ children }: { children: ReactNode }) {
   const [impact, setImpact] = useState<ImpactState | null>(null);
 
   useEffect(() => {
-    const media = window.matchMedia('(min-width: 1024px)');
-    const sync = () => setEnabled(media.matches);
-    sync();
-    media.addEventListener('change', sync);
-    return () => media.removeEventListener('change', sync);
+    setEnabled(true);
   }, []);
 
   const registerSection = useCallback((id: string, element: HTMLElement | null) => {

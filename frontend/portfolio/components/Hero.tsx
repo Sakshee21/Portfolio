@@ -157,8 +157,8 @@ export function Hero() {
             <div className="mb-5 inline-flex rounded-full border border-cyan/20 bg-dark-card/50 px-4 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-cyan/90">
               open to work · seeking SDE, Security &amp; Backend roles
             </div>
-            <h1 className="text-5xl font-bold leading-none sm:text-6xl md:text-7xl">
-              <span className="font-orbitron bg-gradient-to-r from-cyan to-blue-electric bg-clip-text text-transparent tracking-wide">
+            <h1 className="text-4xl font-bold leading-tight sm:text-6xl sm:leading-none md:text-7xl">
+              <span className="font-orbitron bg-gradient-to-br from-cyan to-blue-electric bg-clip-text text-transparent tracking-wide">
                 Sakshee Ujjwal Kumat
               </span>
             </h1>

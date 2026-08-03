@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactFlow, {
   Node,
   Edge,
@@ -13,6 +13,7 @@ import 'reactflow/dist/style.css';
 import { projects, topologyEdges } from '@/data/projects';
 import ProjectNode from './ProjectNode';
 import { motion } from 'framer-motion';
+import { X } from 'lucide-react';
 
 const nodeTypes = {
   project: ProjectNode,
@@ -83,11 +84,35 @@ export function Topology() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  // On mobile, the node-detail panel has no in-page URL of its own, so the
+  // OS back gesture would otherwise leave the whole site instead of closing
+  // it. Pushing a history entry while it's open lets back close it first.
+  useEffect(() => {
+    const handlePopState = () => setSelectedNode(null);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const closeNode = useCallback(() => {
+    setSelectedNode(null);
+    if (window.history.state?.topologyNode) {
+      window.history.back();
+    }
+  }, []);
+
   const onNodeClick = useCallback(
     (event: React.MouseEvent, node: Node) => {
-      setSelectedNode(selectedNode === node.id ? null : node.id);
+      if (selectedNode === node.id) {
+        closeNode();
+      } else if (selectedNode) {
+        window.history.replaceState({ topologyNode: node.id }, '');
+        setSelectedNode(node.id);
+      } else {
+        window.history.pushState({ topologyNode: node.id }, '');
+        setSelectedNode(node.id);
+      }
     },
-    [selectedNode]
+    [selectedNode, closeNode]
   );
 
   const updateHover = useCallback(
@@ -201,8 +226,16 @@ export function Topology() {
                   animate={{ opacity: 1, x: 0, y: 0 }}
                   transition={{ type: 'spring', stiffness: 160, damping: 20 }}
                 >
+                  <button
+                    type="button"
+                    onClick={closeNode}
+                    aria-label="Close node detail"
+                    className="absolute top-4 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-dark-border text-gray-400 transition hover:border-cyan/40 hover:text-cyan"
+                  >
+                    <X size={14} />
+                  </button>
                   <p className="text-xs font-mono text-cyan mb-2">NODE_DETAIL</p>
-                  <h3 className="text-lg font-bold text-white mb-2">{project.name}</h3>
+                  <h3 className="text-lg font-bold text-white mb-2 pr-8">{project.name}</h3>
                   <p className="text-sm text-gray-400 mb-4">{project.description}</p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
