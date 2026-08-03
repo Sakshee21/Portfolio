@@ -78,7 +78,7 @@ export function Hero() {
 
   return (
     <div className="hero-surface relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-dark-bg/70 px-6 py-20 text-gray-200 backdrop-blur-sm md:py-28">
-      <div className="absolute inset-0 opacity-45">
+      <div className="absolute inset-0 opacity-25 sm:opacity-45">
         <GossipCanvas />
       </div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,255,176,0.06),transparent_58%)]" />
@@ -158,7 +158,7 @@ export function Hero() {
               open to work · seeking SDE, Security &amp; Backend roles
             </div>
             <h1 className="text-4xl font-bold leading-tight sm:text-6xl sm:leading-none md:text-7xl">
-              <span className="font-orbitron bg-gradient-to-br from-cyan to-blue-electric bg-clip-text text-transparent tracking-wide">
+              <span className="font-orbitron text-cyan tracking-wide sm:bg-gradient-to-br sm:from-cyan sm:to-blue-electric sm:bg-clip-text sm:text-transparent">
                 Sakshee Ujjwal Kumat
               </span>
             </h1>
@@ -191,7 +191,7 @@ export function Hero() {
 
           {/* Skills badges */}
           <motion.div
-            className="mt-8 flex flex-wrap justify-center gap-2"
+            className="mt-16 flex flex-wrap justify-center gap-2 sm:mt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}

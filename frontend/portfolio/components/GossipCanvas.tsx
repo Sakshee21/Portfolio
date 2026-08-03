@@ -37,7 +37,8 @@ export function GossipCanvas() {
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const radius = Math.min(width, height) * 0.24;
+      const isNarrow = width < 640;
+      const radius = Math.min(width, height) * (isNarrow ? 0.14 : 0.24);
       const centerX = width / 2;
       const centerY = height / 2 + 14;
 
